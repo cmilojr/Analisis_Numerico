@@ -6,9 +6,10 @@ void epsilon_double(int);
 void epsilon_float(int);
 
 int main(){
-
-	epsilon_double(0);
-	epsilon_float(0);
+	int a;
+	epsilon_double(1);
+	epsilon_float(1);
+	cin >> a;
 
 	return 0;
 }
