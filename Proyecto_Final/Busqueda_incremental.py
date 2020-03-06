@@ -1,11 +1,14 @@
 import math
 
 class Busqueda_incremental:
-    
+    def __init__(self):
+        self.valores=[]
+        self.raiz=""
+
     def Operacion(self, valor_inicial,incremento,item,Funciones):
-        valor_evaluado_actual=Funciones.evaluar(valor_inicial)
-        if valor_evaluado_actual==0:
-            print(f"{valor_inicial} es una raiz")
+        self.valores.append([valor_inicial,Funciones.evaluar(valor_inicial)])
+        if self.valores[0][1]==0:
+            print(f"{self.valores[0][0]} es una raiz")
         else:
             if incremento == 0:
                 print("El valor asignado al incremento es incorrecto")
@@ -16,27 +19,30 @@ class Busqueda_incremental:
                     contador=0
                     valor_nuevo=valor_inicial+incremento
                     while (contador<item):
-
+                        self.valores.append([valor_nuevo,Funciones.evaluar(valor_nuevo)]) 
+                        print(valor_inicial) 
                         valor_evaluado_nuevo=Funciones.evaluar(valor_nuevo)
-                        
-                        if(valor_evaluado_actual*valor_evaluado_nuevo<0):
+                        if(self.valores[contador][1]*valor_evaluado_nuevo<=0):
                             break
-
-                        valor_evaluado_actual=valor_evaluado_nuevo
-                        valor_inicial=valor_nuevo
-
-                        valor_nuevo+=incremento
-
-                        contador+=1
-
                         
-                    if valor_evaluado_actual*valor_evaluado_nuevo<0:
-                        print(f"Los valores [{round(valor_inicial,2)},{round(valor_nuevo,2)}] definen un intervalo")
+                        valor_nuevo+=incremento
+                        contador+=1
+                        
+                    if self.valores[contador][1]*valor_evaluado_nuevo<0:
+                        self.raiz=f"[{round(self.valores[contador][0],2)},{round(valor_nuevo,2)}]"
                     else:
-                        if valor_evaluado_actual==0:
-                            print(f"{round(valor_inicial,2)} es una raiz")
+                        if self.valores[contador][1]==0:
+                            self.raiz=round(self.valores[contador][0],2)
                         else:
-                            print("Se presento un fraso en las iteraciones")
+                            if(valor_evaluado_nuevo==0):
+                                self.raiz=round(valor_nuevo,2)
+                            else:
+                                self.raiz="fraso en las iteraciones"
     
-    
+    def tabla_valores(self):
+        for x in self.valores:
+            print(x)
+        return self.valores
+    def get_raiz(self):
+        return str(self.raiz)
 
