@@ -6,8 +6,15 @@ void epsilon_double(int,int);
 void epsilon_float(int);
 
 int main(){
+<<<<<<< HEAD
 
 	epsilon_double(0,1);
+=======
+	int a;
+	epsilon_double(1);
+	epsilon_float(1);
+	cin >> a;
+>>>>>>> aac170ce266f1c276535586276398ce3b9bdbb99
 
 	return 0;
 }
