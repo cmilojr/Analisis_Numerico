@@ -2,22 +2,26 @@
 
 using namespace std;
 
-void epsilon_double(int);
+void epsilon_double(int,int);
 void epsilon_float(int);
 
 int main(){
 
-	epsilon_double(0);
-	epsilon_float(0);
+	epsilon_double(0,1);
 
 	return 0;
 }
 
-void epsilon_double(int metodo) {
-
-	double d = 0.5;
-
+void epsilon_double(int metodo,int coso) {
+	double b = 3242.43280807796868;
+	double* a = &b;
+	cout << *a << endl;
+	
+	double d = 0.0;
+	
 	if (metodo == 1) {
+
+		
 
 		while ((1 + d) != 1)
 		{
@@ -38,7 +42,8 @@ void epsilon_double(int metodo) {
 void epsilon_float(int metodo) {
 
 	float d = 0.5;
-
+	float r = 0.5;
+	double x = 0.5;
 	if (metodo == 1) {
 
 		while ((1 + d) != 1)
@@ -49,11 +54,22 @@ void epsilon_float(int metodo) {
 	}
 	else
 	{
-		while (d != 0)
+		while (x != 0)
 		{
-			cout << d << endl;
-			d = d / 2;
+			if (d == 0) {
+				if (x == 0.5) {
+					x = (double)r;
+				}	
+				cout << x << endl;
+				x = x / 2;
+			}
+			else {
+				r = d;
+				cout << d << endl;
+				d = d / 2;
+			}
 		}
+		
 	}
 }
 
