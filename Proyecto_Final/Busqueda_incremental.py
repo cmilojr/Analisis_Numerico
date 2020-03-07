@@ -8,7 +8,7 @@ class Busqueda_incremental:
     def Operacion(self, valor_inicial,incremento,item,Funciones):
         self.valores.append([valor_inicial,Funciones.evaluar(valor_inicial)])
         if self.valores[0][1]==0:
-            print(f"{self.valores[0][0]} es una raiz")
+            self.raiz=f"{self.valores[0][0]} es una raiz"
         else:
             if incremento == 0:
                 print("El valor asignado al incremento es incorrecto")
@@ -20,7 +20,6 @@ class Busqueda_incremental:
                     valor_nuevo=valor_inicial+incremento
                     while (contador<item):
                         self.valores.append([valor_nuevo,Funciones.evaluar(valor_nuevo)]) 
-                        print(valor_inicial) 
                         valor_evaluado_nuevo=Funciones.evaluar(valor_nuevo)
                         if(self.valores[contador][1]*valor_evaluado_nuevo<=0):
                             break
@@ -37,11 +36,9 @@ class Busqueda_incremental:
                             if(valor_evaluado_nuevo==0):
                                 self.raiz=round(valor_nuevo,2)
                             else:
-                                self.raiz="fraso en las iteraciones"
+                                self.raiz="fracaso en las iteraciones"
     
     def tabla_valores(self):
-        for x in self.valores:
-            print(x)
         return self.valores
     def get_raiz(self):
         return str(self.raiz)

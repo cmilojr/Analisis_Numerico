@@ -22,58 +22,6 @@ class Graficador:
         for widget in self.menu.winfo_children():
             widget.destroy()
 
-    def verificar_funcion(self,funcion,valor_inicial):
-        if(funcion==''):
-            return True
-        else: 
-            try:
-                prueba_funcion=Funciones(funcion)
-                prueba_funcion.evaluar(valor_inicial)
-                return False
-            except:
-                return True
-                
-    
-    def verificar(self,funcion,valor_inicial,incremento,iteraciones):
-        error=""
-        if(self.verificar_funcion(funcion,valor_inicial)):
-            error+="La funcion es invalida, \n Los comandos son: Potencia x**2 \n Raiz= sqrt(x) \n Logaritmo natura= log(x) \n pi= pi \n seno,cose,tangente= sen(x),cos(x),tan(x)"
-        if(incremento==0):
-            error+="\nEl incremento ingresado es invalido "
-        if(iteraciones==0):
-            error+="\nLas iteraciones ingresadas son invalidas "
-        if error!="":
-            self.error_window(error)
-        else:
-            self.valido=True
-
-    def error_window(self,error):
-        self.valido=False
-        ventana = tkinter.Toplevel()
-        ventana.wm_title("Error")
-        texto= tk.Label(ventana, text=error)
-        texto.grid(row=0, column=0)
-        cerrar = tk.Button(ventana, text="Okay", command=ventana.destroy)
-        cerrar.grid(row=1, column=0)
-
-
-    def dibujar_funciones(self,funcion,posicion_inicial,posicion_final,incremento):
-        self.verificar(funcion,posicion_inicial,posicion_final,posicion_final)
-        if(self.valido):
-            Funcion=Funciones(funcion)
-            
-            x = numpy.arange(posicion_inicial, posicion_final,incremento)
-            pyplot.plot(x, [Funcion.evaluar(i) for i in x])
-
-            pyplot.axhline(0, color="black")
-            pyplot.axvline(0, color="black")
-
-
-            pyplot.show()
-
-
-
-
     def menu_capitulos(self):
         self.menu.grid()
         self.clear()
@@ -123,7 +71,7 @@ class Graficador:
 
     def ejecutar_seccion1_punto_fijo(self):
         pass
-
+    
     def ejecutar_busqueda_incremental(self,funcion,valor_inicial,incremento,iteraciones):
         self.verificar(funcion,valor_inicial,incremento,iteraciones)
         if(self.valido):
@@ -132,9 +80,67 @@ class Graficador:
             busqueda.Operacion(valor_inicial,incremento,iteraciones,funcion_convertida)
             self.tabla_valores(busqueda.tabla_valores())
             self.mostrar_raiz(busqueda.get_raiz())
+    
+    def ejecutar_seccion2(self):
+        pass
+    
+    def ejecutar_seccion3(self):
+        pass
+
+    def ejecutar_seccion4(self):
+        pass
+
+
+    def verificar_funcion(self,funcion,valor_inicial):
+        if(funcion==''):
+            return True
+        else: 
+            try:
+                prueba_funcion=Funciones(funcion)
+                prueba_funcion.evaluar(valor_inicial)
+                return False
+            except:
+                return True
+                
+    
+    def verificar(self,funcion,valor_inicial,incremento,iteraciones):
+        error=""
+        if(self.verificar_funcion(funcion,valor_inicial)):
+            error+="La funcion es invalida, \n Los comandos son: Potencia x**2 \n Raiz= sqrt(x) \n Logaritmo natura= log(x) \n pi= pi \n seno,cose,tangente= sen(x),cos(x),tan(x)"
+        if(incremento==0):
+            error+="\nEl incremento ingresado es invalido "
+        if(iteraciones==0):
+            error+="\nLas iteraciones ingresadas son invalidas "
+        if error!="":
+            self.error_window(error)
+        else:
+            self.valido=True
+
+    def error_window(self,error):
+        self.valido=False
+        ventana = tkinter.Toplevel()
+        ventana.wm_title("Error")
+        texto= tk.Label(ventana, text=error)
+        texto.grid(row=0, column=0)
+        cerrar = tk.Button(ventana, text="Okay", command=ventana.destroy)
+        cerrar.grid(row=1, column=0)
+
+
+    def dibujar_funciones(self,funcion,posicion_inicial,posicion_final,incremento):
+        self.verificar(funcion,posicion_inicial,posicion_final,posicion_final)
+        if(self.valido):
+            Funcion=Funciones(funcion)
+            
+            x = numpy.arange(posicion_inicial, posicion_final,incremento)
+            pyplot.plot(x, [Funcion.evaluar(i) for i in x])
+
+            pyplot.axhline(0, color="black")
+            pyplot.axvline(0, color="black")
+
+
+            pyplot.show()
 
     def mostrar_raiz(self,raiz):
-        print(raiz)
         texto_raiz=tk.Label(self.menu, text="La raiz esta en: ").place(x=40,y=160)
         texto_raiz_resultado=tkinter.Label(self.menu,width=20,bg='white',relief="sunken",borderwidth=2,text=raiz).place(x=150,y=160)
 
@@ -145,14 +151,6 @@ class Graficador:
         table = pt = Table(ventana, dataframe=df,showtoolbar=True, showstatusbar=True)
         pt.show()
 
-    def ejecutar_seccion2(self):
-        pass
     
-    def ejecutar_seccion3(self):
-        pass
-
-    def ejecutar_seccion4(self):
-        pass
-
 
  
