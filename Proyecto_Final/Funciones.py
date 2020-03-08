@@ -1,12 +1,12 @@
-from scitools.StringFunction import StringFunction
+import sympy
+from sympy.parsing.sympy_parser import parse_expr
 
 class Funciones:
     def __init__(self,entrada):
-        self.funcion=StringFunction(entrada)
+        self.funcion=parse_expr(entrada)
     
     def evaluar(self,valor):
-       return self.funcion(valor)
-
+       return  self.funcion.evalf(subs=dict(x=valor))
 
 
 
