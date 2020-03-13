@@ -1,0 +1,807 @@
+#:import hex kivy.utils.get_color_from_hex
+#:import Clipboard kivy.core.clipboard.Clipboard
+
+WindowManager:
+    Menu_Inicial:
+    Ecuaciones_no_lineales:
+    Sistemas_de_ecuaciones:
+    Interpolacion:
+    Diferenciacion_numerica:
+    Ecuaciones_no_lineales_busqueda:
+    Ecuaciones_no_lineales_biseccion:
+    Ecuaciones_no_lineales_regla_falsa:
+    Ecuaciones_no_lineales_punto_fijo:
+    Ecuaciones_no_lineales_newton:
+    Ecuaciones_no_lineales_raices_multiples:
+    Ecuaciones_no_lineales_secantes:
+    Sistemas_de_ecuaciones_eliminacion_gaussiana:
+    Sistemas_de_ecuaciones_pivoteo:
+    Sistemas_de_ecuaciones_Factorizacion_lu:
+    Sistemas_de_ecuaciones_Factorizacion_matrices:
+    Sistemas_de_ecuaciones_iterativos:
+    Interpolacion_newton:
+    Interpolacion_lagrange:
+    Interpolacion_splines:
+    Diferenciacion_numerica_diferenciacion:
+
+#:set color_background "#03A9F4"
+#:set color_button "#00FF7F"
+
+<Menu_Inicial>
+    name: "Menu_Inicial"
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Capitulos"
+            font_size:"30sp"
+            color: 1,1,1,1 
+
+
+        Button:
+            background_color: hex(color_button)
+            text: "Ecuaciones no lineales"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="Ecuaciones_no_lineales"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Sistemas de ecuaciones"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones"     
+                root.manager.transition.direction="left"
+
+        Button:
+            background_color: hex(color_button)
+            text: "Interpolacion"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Interpolacion"
+                root.manager.transition.direction="left"     
+
+        Button:
+            background_color: hex(color_button)
+            text: "Diferenciacion e Integracion Numerica"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Diferenciacion_numerica"
+                root.manager.transition.direction="left"
+
+
+<Ecuaciones_no_lineales>
+    name:"Ecuaciones_no_lineales"
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Metodos"
+            font_size:"30sp"
+            color: 1,1,1,1 
+
+
+        Button:
+            background_color: hex(color_button)
+            text: "Busqueda Incremental"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_busqueda"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Biseccion"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_biseccion"     
+                root.manager.transition.direction="left"
+
+        Button:
+            background_color: hex(color_button)
+            text: "Regla Falsa"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_regla_falsa"  
+                root.manager.transition.direction="left"   
+
+        Button:
+            background_color: hex(color_button)
+            text: "Punto Fijo"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_punto_fijo"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Newton"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_newton"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Secantes"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_secantes"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Raices Multiples"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales_raices_multiples"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Sistemas_de_ecuaciones>
+    name:"Sistemas_de_ecuaciones"
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Metodos"
+            font_size:"30sp"
+            color: 1,1,1,1 
+        Button:
+            background_color: hex(color_button)
+            text: "Eliminacion Gussiana Simple"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones_eliminacion_gaussiana"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Pivoteo"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones_pivoteo"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Factorizacion Lu"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones_Factorizacion_lu"     
+                root.manager.transition.direction="left"
+
+        Button:
+            background_color: hex(color_button)
+            text: "Factorizacion directa de matrices"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones_Factorizacion_matrices"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Metodos iterativos"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Sistemas_de_ecuaciones_iterativos"
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Interpolacion>
+    name:"Interpolacion"
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Metodos"
+            font_size:"30sp"
+            color: 1,1,1,1 
+        Button:
+            background_color: hex(color_button)
+            text: "Newton"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="Interpolacion_newton"    
+                root.manager.transition.direction="left" 
+        Button:
+            background_color: hex(color_button)
+            text: "Lagrange"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Interpolacion_lagrange"   
+                root.manager.transition.direction="left"  
+        Button:
+            background_color: hex(color_button)
+            text: "Splines"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Interpolacion_splines"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Diferenciacion_numerica>
+    name:"Diferenciacion_numerica"
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Metodos"
+            font_size:"30sp"
+            color: 1,1,1,1 
+        Button:
+            background_color: hex(color_button)
+            text: "Diferenciacion_numerica"
+            font_size:"17sp"   
+            on_press:
+                app.root.current="Diferenciacion_numerica_diferenciacion"     
+                root.manager.transition.direction="left"
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+
+<Ecuaciones_no_lineales_busqueda>
+    name:"Ecuaciones_no_lineales_busqueda"
+    funciones:funciones
+    posicion_inicial:posicion_inicial
+    incremento:incremento
+    iteraciones:iteraciones
+    raiz:raiz
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 2
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Funcion f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+                allow_copy: True
+        GridLayout:
+            cols: 6
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Posicion Inicial"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:posicion_inicial
+                multiline:False
+            Label:
+                text: "Incremento"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:incremento
+                multiline:False
+            Label:
+                text: "Iteraciones"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:iteraciones
+                multiline:False
+        GridLayout:
+            cols: 2
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Raiz"
+                font_size:"20sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:raiz
+                multiline:False
+        Button:
+            background_color: hex(color_button)
+            text: "Buscar"
+            font_size:"17sp"  
+            on_press:root.buscar()
+            
+        Button:
+            background_color: hex(color_button)
+            text: "Graficar"
+            font_size:"17sp"  
+            on_press:root.graficar()
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                root.manager.funcion_global=root.funciones.text
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+<Ecuaciones_no_lineales_biseccion>
+    name:"Ecuaciones_no_lineales_biseccion"
+    funciones:funciones
+    xi:xi
+    xs:xs
+    iteraciones:iteraciones
+    tolerancia:tolerancia
+    raiz:raiz
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Funcion f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "Xs"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xs
+                multiline:False
+            Label:
+                text: "Iteraciones"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:iteraciones
+                multiline:False
+            Label:
+                text: "Tolerancia"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:tolerancia
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Raiz"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1 
+            TextInput:
+                size_hint_x:1
+                id:raiz
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: " Error Absoluto"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    active:True
+                    on_active: root.tipo_de_error(True)
+                Label:
+                    size_hint_x:0.8
+                    text: "Error Relativo"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+        Button:
+            background_color: hex(color_button)
+            text: "Buscar"
+            font_size:"17sp"  
+            on_press:root.buscar()
+            
+        Button:
+            background_color: hex(color_button)
+            text: "Graficar"
+            font_size:"17sp"  
+            on_press:root.graficar()
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                root.manager.funcion_global=root.funciones.text
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+<Ecuaciones_no_lineales_regla_falsa>
+    name:"Ecuaciones_no_lineales_regla_falsa"
+    funciones:funciones
+    xi:xi
+    xs:xs
+    iteraciones:iteraciones
+    tolerancia:tolerancia
+    raiz:raiz
+    GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Funcion f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "Xs"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xs
+                multiline:False
+            Label:
+                text: "Iteraciones"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:iteraciones
+                multiline:False
+            Label:
+                text: "Tolerancia"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:tolerancia
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Raiz"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1 
+            TextInput:
+                size_hint_x:1
+                id:raiz
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: " Error Absoluto"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    active:True
+                    on_active: root.tipo_de_error(True)
+                Label:
+                    size_hint_x:0.8
+                    text: "Error Relativo"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+        Button:
+            background_color: hex(color_button)
+            text: "Buscar"
+            font_size:"17sp"  
+            on_press:root.buscar()
+            
+        Button:
+            background_color: hex(color_button)
+            text: "Graficar"
+            font_size:"17sp"  
+            on_press:root.graficar()
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                root.manager.funcion_global=root.funciones.text
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+<Ecuaciones_no_lineales_punto_fijo>
+    name:"Ecuaciones_no_lineales_punto_fijo"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+
+<Ecuaciones_no_lineales_newton>
+    name:"Ecuaciones_no_lineales_newton"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+<Ecuaciones_no_lineales_secantes>
+    name:"Ecuaciones_no_lineales_secantes"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+
+<Ecuaciones_no_lineales_raices_multiples>
+    name:"Ecuaciones_no_lineales_raices_multiples"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Ecuaciones_no_lineales"  
+                root.manager.transition.direction="right"
+
+<Sistemas_de_ecuaciones_eliminacion_gaussiana>
+    name:"Sistemas_de_ecuaciones_eliminacion_gaussiana"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Sistemas_de_ecuaciones_pivoteo>
+    name:"Sistemas_de_ecuaciones_pivoteo"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Sistemas_de_ecuaciones_Factorizacion_lu>
+    name:"Sistemas_de_ecuaciones_Factorizacion_lu"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Sistemas_de_ecuaciones_Factorizacion_matrices>
+    name:"Sistemas_de_ecuaciones_Factorizacion_matrices"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Sistemas_de_ecuaciones_iterativos>
+    name:"Sistemas_de_ecuaciones_iterativos"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Interpolacion_newton>
+    name:"Interpolacion_newton"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Interpolacion_lagrange>
+    name:"Interpolacion_lagrange"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Interpolacion_splines>
+    name:"Interpolacion_splines"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+
+<Diferenciacion_numerica_diferenciacion>
+
+
+    name:"Diferenciacion_numerica_diferenciacion"
+    GridLayout:
+        Button:
+            background_color: hex(color_button)
+            text: "Volver"
+            font_size:"17sp"  
+            on_press:
+                app.root.current="Menu_Inicial"  
+                root.manager.transition.direction="right"
+
+<Ventana_emergente>
+    contenido:contenido
+    boton:boton
+    Label: 
+        id: contenido
+        size_hint: 0.6, 0.7
+        pos_hint: {"x":0.2,"top":1}
+    
+    Button:
+        id: boton
+        text: "Aceptar"
+        size_hint:0.8,0.2
+        pos_hint:{"x":0.1,"y":0.1}
