@@ -129,7 +129,38 @@ class Ecuaciones_no_lineales_regla_falsa(Screen):
     def tipo_de_error(self,tipo):
         self.tipo_error=tipo
 class Ecuaciones_no_lineales_punto_fijo(Screen):
-    pass
+    xi=ObjectProperty(None)
+    xs=ObjectProperty(None)
+    iteraciones=ObjectProperty(None)
+    tolerancia=ObjectProperty(None)
+    raiz=ObjectProperty(None)
+    funciones=ObjectProperty(None)
+
+    def buscar(self):
+        regla_falsa=Regla_falsa()
+        tabla=Tabla()
+        verificar=Verificar()
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        if(error==""):
+            Funcion=Funciones(self.funciones.text)
+            regla_falsa.algorimo_regla_falsa(float(self.xi.text),float(self.xs.text),Funcion,float(self.tolerancia.text),float(self.iteraciones.text),self.tipo_error)
+            self.raiz.text=regla_falsa.get_raiz()
+            columnas=['Iteracion','Xi','Xu','Xm','F(xm)','Error']
+            tabla.dibujar(regla_falsa.tabla_valores(),columnas)
+        else:
+            show_popup("Error Regla_falsa",error)
+
+    def graficar(self):
+        grafica=Graficar()
+        verificar=Verificar()
+        error=verificar.verificar_biseccion(self.funciones.text,self.xi.text,self.xs.text,self.iteraciones.text,self.tolerancia.text)
+        if(error==""):
+            grafica.dibujar_funciones(self.funciones.text,float(self.xi.text),float(self.xs.text),float(self.tolerancia.text))
+        else:
+            show_popup("Error Graficar Regla Falsa",error)
+
+    def tipo_de_error(self,tipo):
+        self.tipo_error=tipo
 class Ecuaciones_no_lineales_secantes(Screen):
     pass
 class Ecuaciones_no_lineales_newton(Screen):

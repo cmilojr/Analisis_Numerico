@@ -639,12 +639,126 @@ WindowManager:
 
 <Ecuaciones_no_lineales_punto_fijo>
     name:"Ecuaciones_no_lineales_punto_fijo"
+    funciones:funciones
+    xi:xi
+    xs:xs
+    iteraciones:iteraciones
+    tolerancia:tolerancia
+    raiz:raiz
     GridLayout:
+        size:root.width,root.height
+        spacing: '10dp'
+        padding:30,20
+        cols:1
+        canvas.before:
+            Color:
+                rgba: hex(color_background)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            cols: 3
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Funcion f(x)"
+                font_size:"25sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:funciones
+                text:root.manager.funcion_global
+                multiline:False
+            
+                    
+        GridLayout:
+            cols: 8
+            row_default_height:30
+            row_force_default:True
+            Label:
+                text: "Xi"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xi
+                multiline:False
+            Label:
+                text: "Xs"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:xs
+                multiline:False
+            Label:
+                text: "Iteraciones"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:iteraciones
+                multiline:False
+            Label:
+                text: "Tolerancia"
+                font_size:"15sp"
+                color: 1,1,1,1 
+            TextInput:
+                id:tolerancia
+                multiline:False
+        GridLayout:
+            spacing: '10dp'
+            cols: 4
+            row_default_height:30
+            row_force_default:True
+            Label:
+                size_hint_x:0.4
+                text: "Raiz"
+                width:10
+                font_size:"20sp"
+                color: 1,1,1,1 
+            TextInput:
+                size_hint_x:1
+                id:raiz
+                multiline:False
+            Label:
+                size_hint_x:0.2
+                text: ""
+            GridLayout:
+                spacing: '2dp'
+                cols: 2
+                row_default_height:30
+                row_force_default:True
+                Label:
+                    size_hint_x:0.9
+                    text: " Error Absoluto"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    active:True
+                    on_active: root.tipo_de_error(True)
+                Label:
+                    size_hint_x:0.8
+                    text: "Error Relativo"
+                    color: 1,1,1,1 
+                CheckBox:
+                    group: "tipo_de_error"
+                    color:  0,0,0,1 
+                    on_active: root.tipo_de_error(False)
+        Button:
+            background_color: hex(color_button)
+            text: "Buscar"
+            font_size:"17sp"  
+            on_press:root.buscar()
+            
+        Button:
+            background_color: hex(color_button)
+            text: "Graficar"
+            font_size:"17sp"  
+            on_press:root.graficar()
         Button:
             background_color: hex(color_button)
             text: "Volver"
             font_size:"17sp"  
             on_press:
+                root.manager.funcion_global=root.funciones.text
                 app.root.current="Ecuaciones_no_lineales"  
                 root.manager.transition.direction="right"
 
